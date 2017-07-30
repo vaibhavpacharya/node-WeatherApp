@@ -1,7 +1,6 @@
 var express   = require("express"),
 app           = express(),
 request       = require("request"),
-ejs           = require("ejs"),
 bodyParser    = require("body-parser");
 
 
