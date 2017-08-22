@@ -9,15 +9,177 @@
                 <input class="form-control" type="text" name="city" placeholder="city" required>
             </div>
             <div class="form-group">
-                <button class="btn btn-lg btn-primary btn-block">Get Weather!</button>
+                <button class="btn btn-lg btn-primary btn-block" onclick="myFunction()">Get Weather!</button>
             </div>
           </form>
-          <div class="alert alert-success">
-            <p><strong><%= weather %></strong></p>
-          </div>
+            <div class="alert alert-success" style="display:none" id="grn_alert">
+              <p><strong><%= weather %></strong></p>
+            </div>
     </div>
   </div>
 </div>
+
+<div class="widget-block" id="widget-block" style="display:none">
+  <div class="widget-area">
+    <h5 class="location">
+      <div class="location-info">
+        <i class="fa fa-map-marker"></i>
+        <%= city %>, <%= country %>
+      </div>
+    </h5>
+    <p class="today"><%= time %></p>
+    <div class="weather-desc">
+      <span><div style="text-transform:capitalize"><%= currWeather %></div></span>
+    </div>
+    <ul class="weather-block-info">
+                  <li id="outer-block">
+                       <p class="temperature"><%= currTemp %><span class="font-size-30">C</span></p>
+                       <!-- <span class="temperature-feels">+20 feels</span></p> -->
+                  </li>
+                  <li id="outer-block">
+                    <% if(code >= 200 && code <= 232) { %>
+                      <div class="icon thunder-storm">
+                        <div class="cloud"></div>
+                        <div class="lightning">
+                        <div class="bolt"></div>
+                        <div class="bolt"></div>
+                        </div>
+                      </div>
+                    <% } %>
+
+                    <% if(code >= 300 && code <= 321) { %>
+                      <div class="icon rainy">
+                        <div class="cloud"></div>
+                        <div class="rain"></div>
+                      </div>
+                    <% } %>
+
+                    <% if(code >= 500 && code <= 531) { %>
+                      <div class="icon rainy">
+                        <div class="cloud"></div>
+                        <div class="rain"></div>
+                      </div>
+                    <% } %>
+
+                    <% if(code >= 600 && code <= 622) { %>
+                      <div class="icon flurries">
+                        <div class="cloud"></div>
+                        <div class="snow">
+                          <div class="flake"></div>
+                          <div class="flake"></div>
+                        </div>
+                      </div>
+                    <% } %>
+
+                    <% if(code >= 701 && code <= 781) { %>
+                      <div class="icon sun-shower">
+                        <div class="cloud"></div>
+                        <div class="sun">
+                          <div class="rays"></div>
+                        </div>
+                        <div class="rain"></div>
+                      </div>
+                    <% } %>
+
+                    <% if(code == 800) { %>
+                      <div class="icon cloudy">
+                        <div class="cloud"></div>
+                        <div class="cloud"></div>
+                      </div>
+                    <% } %>
+
+                    <% if(code >= 801 && code <= 804) { %>
+                      <div class="icon cloudy">
+                        <div class="cloud"></div>
+                        <div class="cloud"></div>
+                      </div>
+                    <% } %>
+
+                    <% if(code >= 900 && code <= 906) { %>
+                      <div class="icon sun-shower">
+                        <div class="cloud"></div>
+                        <div class="sun">
+                          <div class="rays"></div>
+                        </div>
+                        <div class="rain"></div>
+                      </div>
+                    <% } %>
+
+                  </li>
+                  <li id="outer-block">
+                     <ul class="weather-params">
+                        <li id="inner-block"><i class="climacon thermometer medium-high"></i> <span><%= currPressure %> hPa</span></li>
+                        <li id="inner-block"><i class="climacon moon full"></i> <span><%= currHumid %>% humidity</span></li>
+                        <li id="inner-block"><i class="climacon wind"></i> <span><%= currWind %>mph <%= windShort %></span></li>
+                     </ul>
+                  </li>
+                  <li id="outer-block">
+                     <ul class="weather-params">
+                        <li id="inner-block"><i class="climacon umbrella"></i> <span> <%= currCloud %>%</span></li>
+                        <li id="inner-block"><i class="climacon compass"></i> <span><%= currDegree %></span></li>
+                        <li id="inner-block">
+                          <!-- <i class="climacon shades"></i> -->
+                          <?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+<path fill="#ffffff" d="M62.998,50h-1v2c0,1.656-1.343,2.999-3,2.999h-3.999
+	C53.342,54.999,52,53.656,52,52l-0.99-3.959C50.664,48.017,50.314,48,49.969,48c-0.332,0-0.66,0.019-0.98,0.047L48,52
+	c0,1.656-1.343,2.999-3,2.999h-3.999c-1.657,0-3-1.343-3-2.999v-2h-0.999c-0.553,0-1-0.447-1-1v-1c0-0.552,0.447-0.999,1-0.999
+	h1.184c0.412-1.163,1.512-2,2.815-2H46c0.945,0,1.778,0.445,2.328,1.129c0.525-0.076,1.076-0.129,1.641-0.129
+	c0.575,0,1.154,0.046,1.72,0.108c0.55-0.671,1.375-1.108,2.311-1.108h4.999c1.305,0,2.403,0.837,2.816,2h1.184
+	c0.553,0,1,0.447,1,0.999v1C63.998,49.553,63.551,50,62.998,50z M44.34,46.66c-0.292-0.293-0.768-0.293-1.061,0l-3.181,3.182
+	c-0.293,0.293-0.293,0.768,0,1.061c0.292,0.293,0.768,0.293,1.06,0l3.182-3.182C44.633,47.428,44.633,46.953,44.34,46.66z
+	 M58.339,46.66c-0.293-0.293-0.768-0.293-1.061,0l-3.182,3.182c-0.293,0.293-0.293,0.768,0,1.061s0.768,0.293,1.061,0l3.182-3.182
+	C58.632,47.428,58.632,46.953,58.339,46.66z"/>
+</svg>
+                          <span><%= visibility %></span></li>
+                       </ul>
+                  </li>
+
+               </ul>
+            </div>
+         </div>
+         <!-- /MAIN AREA -->
+         <!-- WEATHER FORECAST -->
+         <div class="forecast" id="forecast" style="display:none">
+           <div class="row week-forecast">
+             <div class="col-xs-3 col-1">
+               <div class="title">
+                 <i class="fa fa-chevron-down green-600 font-size-20 margin-right-5"></i>
+                 <span class="font-size-30"><%= tempLow %></span>
+                 <span class="font-size-24">C</span>
+               </div>
+               <div class="font-size-14">LOW</div>
+              </div>
+              <div class="col-xs-3 col-2">
+                <div class="title">
+                  <i class="fa fa-chevron-up red-600 font-size-20 margin-right-5"></i>
+                  <span class="font-size-30"><%= tempHigh %></span>
+                  <span class="font-size-24">C</span>
+                </div>
+                <div class="font-size-14">HIGH</div>
+               </div>
+               <div class="col-xs-3 col-3">
+                 <div class="title">
+                   <img src="https://png.icons8.com/sunrise/win8/26" title="Sunrise" width="26" height="26">
+                   <span class="font-size-30"><%= sunrise %></span>
+                 </div>
+                 <div class="font-size-14">SUNRISE</div>
+                </div>
+                <div class="col-xs-3 col-4">
+                  <div class="title">
+                    <img src="https://png.icons8.com/sunset/win8/26" title="Sunset" width="26" height="26">
+                    <span class="font-size-30"><%= sunset %></span>
+                  </div>
+                  <div class="font-size-14">SUNSET</div>
+                 </div>
+
+           </div>
+         </div>
+         <!-- /WEATHER FORECAST -->
+
 
 <ul class="slideshow">
   <li></li>
